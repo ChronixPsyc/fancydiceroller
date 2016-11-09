@@ -160,7 +160,7 @@
         outputString += '... Didn\'t make it onto the magic items tables. You suck.<br />';
         outputString += 'Your first D4 roll got you a ' + this.firstD4DiceRoll;
         if (this.firstD4DiceRoll === 4) {
-          outputString += '... BOOM IT FUCKING BLEW UP SON!!! HAHAHAHAHAHAHAHAHAHAHAHA!!!!<br />';
+          outputString += '... BOOM IT FUCKING BLEW UP SON!!! HAHAHA!!!!<br />';
           outputString += 'The second D4 was a ' + this.secondD4DiceRoll + ' which gives you ' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll].toLowerCase();
 
           if(SECOND_D4_ATTEMPT[this.secondD4DiceRoll] === "Goods") {
