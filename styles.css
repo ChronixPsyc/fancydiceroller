@@ -112,6 +112,13 @@ img {
 }
 
 @media(max-width: 768px) {
+
+  .output {
+    text-shadow: 0 0 4px rgba(255, 255, 255, 1),
+                 0 0 4px rgba(255, 255, 255, 1),
+                 0 0 4px rgba(255, 255, 255, 1);
+  }
+
   img {
     max-width: 100%;
   }
