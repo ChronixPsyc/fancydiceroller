@@ -108,6 +108,8 @@ img {
 #image-preloader {
   background-image: url('images/art.png'),
                     url('images/gems.png'),
+                    url('images/goods.png'),
+                    url('images/magic-item.png'),
                     url('images/metals.png');
 }
 
