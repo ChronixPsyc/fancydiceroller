@@ -16,6 +16,7 @@ body, html {
   line-height: 1.4;
   background: url('images/page-background.jpg') repeat 0 0 #E6E6DA;
   font-family: 'Cormorant Garamond', serif;
+  color: black;
 }
 
 * {
@@ -101,6 +102,14 @@ img {
   transition: opacity 200ms linear;
 }
 
+.highlight {
+  font-size: 1.4em;
+  line-height: 1.1;
+  font-weight: bold;
+  display: inline-block;
+  border-bottom: 2px solid black;
+}
+
 .fade {
   opacity: 1;
 }
@@ -109,7 +118,7 @@ img {
   background-image: url('images/art.png'),
                     url('images/gems.png'),
                     url('images/goods.png'),
-                    url('images/magic-item.png'),
+                    url('images/magic-item.jpg'),
                     url('images/metals.png');
 }
 

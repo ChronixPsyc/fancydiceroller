@@ -29,28 +29,22 @@
   var MagicItemTableRoll = (function MagicItemTableRoll() {
 
     function MagicItemTableRoll(options) {
-      this.button = null;
+      this.button = options.button;
       this.d100DiceRoll = null;
       this.firstD4DiceRoll = null;
       this.secondD4DiceRoll = null;
       this.d10DiceRoll = null;
       this.d10Result = null;
       this.d100Successful = null;
+      this.onClick = this.onClick.bind(this);
 
-      this.init(options);
-    }
-
-    MagicItemTableRoll.prototype.init = function init(options) {
-      this.button = options.button;
-
-      this.button.addEventListener('click', this.onClick.bind(this));
-      diceRoll.removeEventListener('ended', this.showOutput.bind(this));
-      diceRoll.addEventListener('ended', this.showOutput.bind(this));
-
+      this.button.removeEventListener('click', this.onClick, false);
+      this.button.addEventListener('click', this.onClick, false);
+      diceRoll.removeEventListener('ended', this.showOutput.bind(this), false);
+      diceRoll.addEventListener('ended', this.showOutput.bind(this), false);
     }
 
     MagicItemTableRoll.prototype.onClick = function onClick() {
-      this.button.removeEventListener('click', this.onClick.bind(this));
 
       // Reset shizzle
       OUTPUT.innerHTML = '';
@@ -137,7 +131,7 @@
         if (this.firstD4DiceRoll === 4) {
 
           this.secondD4DiceRoll = this.diceRoll(4);
-          console.warn('First D4 = ' + this.secondD4DiceRoll);
+          console.warn('Second D4 = ' + this.secondD4DiceRoll);
 
         }
       }
@@ -151,27 +145,27 @@
       var outputString = '';
 
       // Determine D100 roll
-      outputString += 'On the D100 roll, you got a ' + this.d100DiceRoll;
+      outputString += 'On the D100 roll, you got a <span class="highlight">' + this.d100DiceRoll + '</span>';
 
       if (this.d100Successful) {
         outputString += ' and you successfully made it onto the magic item selection table! Good job buddy.<br />';
-        outputString += 'Your D10 got you a ' + this.d10DiceRoll + ' which gives you the letter ' + this.d10Result + '.';
+        outputString += 'Your D10 got you a <span class="highlight">' + this.d10DiceRoll + '</span> which gives you the letter <span class="highlight">' + this.d10Result.toUpperCase() + '</span>.';
       } else {
         outputString += '... Didn\'t make it onto the magic items tables. You suck.<br />';
-        outputString += 'Your first D4 roll got you a ' + this.firstD4DiceRoll;
+        outputString += 'Your first D4 roll got you a <span class="highlight">' + this.firstD4DiceRoll + '</span>';
         if (this.firstD4DiceRoll === 4) {
           outputString += '... BOOM IT FUCKING BLEW UP SON!!! HAHAHA!!!!<br />';
-          outputString += 'The second D4 was a ' + this.secondD4DiceRoll + ' which gives you ' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll].toLowerCase();
+          outputString += 'The second D4 was a <span class="highlight">' + this.secondD4DiceRoll + '</span> which gives you ';
 
           if(SECOND_D4_ATTEMPT[this.secondD4DiceRoll] === "Goods") {
-            outputString += 'some ' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll] + '.';
+            outputString += 'some <span class="highlight">' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll].toLowerCase() + '</span>.';
 
             setTimeout(function () {
               goods.play();
               IMAGE.src = "images/goods.png";
             }, 200);
           } else {
-            outputString += ' a ' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll] + '!';
+            outputString += ' a <span class="highlight">' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll] + '</span>!';
 
             setTimeout(function () {
               magicItem.play();
@@ -179,7 +173,7 @@
             }, 200);
           }
         } else {
-          outputString += ' which gives you some ' + FIRST_D4_ATTEMPT[this.firstD4DiceRoll].toLowerCase() + '.';
+          outputString += ' which gives you some <span class="highlight">' + FIRST_D4_ATTEMPT[this.firstD4DiceRoll].toLowerCase() + '</span>.';
 
           setTimeout(function () {
             if (FIRST_D4_ATTEMPT[self.firstD4DiceRoll] === "Gems") {
@@ -202,8 +196,6 @@
 
       OUTPUT.innerHTML = outputString;
       OUTPUT.classList.add('fade');
-
-      this.button.addEventListener('click', this.onClick.bind(this));
 
     }
 
