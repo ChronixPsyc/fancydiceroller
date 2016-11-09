@@ -6,7 +6,7 @@
   <title>Fancy Dice Rolling App</title>
   <meta name="description" content="Fancy Dice Rolling WebApp for a D&D 5e campaign">
   <meta name="author" content="Charlie Marshall">
-
+  <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,10 +16,9 @@
   <section class="main">
     <button class="btn generate-item">Roll them bones</button>
     <div class="output"></div>
+    <img class="image">
   </section>
-  <footer>
-    &copy; Charlie Marshall - 2016
-  </footer>
+  <div id="image-preloader" style="position: absolute; z-index: 0; width: 0; height: 0; background-size: 0;"></div>
   <script src="main.js"></script>
 </body>
 </html>
