@@ -118,7 +118,7 @@
 
         if (this.d10DiceRoll === 10) {
 
-          this.d10Result = 'let\'s you pick an item from Volo\'s bag;
+          this.d10Result = 'let\'s you pick an item from Volo\'s bag';
 
         } else {
 
