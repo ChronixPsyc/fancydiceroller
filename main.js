@@ -35,6 +35,7 @@
       this.secondD4DiceRoll = null;
       this.d10DiceRoll = null;
       this.d10Result = null;
+      this.minorMagicItem = null;
       this.d100Successful = null;
       this.onClick = this.onClick.bind(this);
 
@@ -103,6 +104,7 @@
       this.d10DiceRoll = 0;
       this.d10Result = 0;
       this.d100Successful = 0;
+      this.minorMagicItem = 0;
 
       // Roll initial d100
       this.d100DiceRoll = this.diceRoll(100);
@@ -123,7 +125,9 @@
         } else {
 
           this.d10Result = this.resultToLetters(this.d10DiceRoll);
+          this.minorMagicItem = this.diceRoll(100);
           console.warn('Magic Table Letter = ' + this.d10Result);
+          console.warn('Magic Table Item Number = ' + this.minorMagicItem);
 
         }
 
@@ -136,6 +140,10 @@
 
           this.secondD4DiceRoll = this.diceRoll(4);
           console.warn('Second D4 = ' + this.secondD4DiceRoll);
+
+          if(this.secondD4DiceRoll === 4) {
+            this.minorMagicItem = this.diceRoll(1000);
+          }
 
         }
       }
@@ -157,8 +165,8 @@
         if(this.d10DiceRoll === 10) {
           outputString += 'gives you the letter <span class="highlight">' + this.d10Result + '</span>.'
         } else {
-          
-          outputString += '<span class="highlight">' + this.d10Result + '</span>.'
+          outputString += '<span class="highlight">' + this.d10Result + '</span>.<br />'
+          outputString += 'The item number you need to find in the Magic Item Table is <span class="highlight">' + this.minorMagicItem + '</span>.'; 
         }
       } else {
         outputString += '... Didn\'t make it onto the magic items tables. You suck.<br />';
@@ -175,7 +183,8 @@
               IMAGE.src = "images/goods.png";
             }, 200);
           } else {
-            outputString += ' a <span class="highlight">' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll] + '</span>!';
+            outputString += ' a <span class="highlight">' + SECOND_D4_ATTEMPT[this.secondD4DiceRoll] + '</span>!<br />';
+            outputString += 'The item number you need to find in the Magic Item Table is <span class="highlight">' + this.minorMagicItem + '</span>.'; 
 
             setTimeout(function () {
               magicItem.play();
