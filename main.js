@@ -118,6 +118,10 @@
 
         if (this.d10DiceRoll === 10) {
 
+          this.d10Result = 'let\'s you pick an item from Volo\'s bag;
+
+        } else {
+
           this.d10Result = this.resultToLetters(this.d10DiceRoll);
           console.warn('Magic Table Letter = ' + this.d10Result);
 
@@ -149,7 +153,13 @@
 
       if (this.d100Successful) {
         outputString += ' and you successfully made it onto the magic item selection table! Good job buddy.<br />';
-        outputString += 'Your D10 got you a <span class="highlight">' + this.d10DiceRoll + '</span> which gives you the letter <span class="highlight">' + this.d10Result.toUpperCase() + '</span>.';
+        outputString += 'Your D10 got you a <span class="highlight">' + this.d10DiceRoll + '</span> which ';
+        if(this.d10DiceRoll === 10) {
+          outputString += 'gives you the letter <span class="highlight">' + this.d10Result + '</span>.'
+        } else {
+          
+          outputString += '<span class="highlight">' + this.d10Result + '</span>.'
+        }
       } else {
         outputString += '... Didn\'t make it onto the magic items tables. You suck.<br />';
         outputString += 'Your first D4 roll got you a <span class="highlight">' + this.firstD4DiceRoll + '</span>';
