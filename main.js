@@ -165,7 +165,7 @@
         if(this.d10DiceRoll === 10) {
           outputString += 'gives you the letter <span class="highlight">' + this.d10Result + '</span>.'
         } else {
-          outputString += '<span class="highlight">' + this.d10Result + '</span>.<br />'
+          outputString += 'gives you the letter <span class="highlight">' + this.d10Result + '</span>.<br />'
           outputString += 'The item number you need to find in the Magic Item Table is <span class="highlight">' + this.minorMagicItem + '</span>.'; 
         }
       } else {
